@@ -4,7 +4,6 @@ public class Car extends Vehicle{
     private double horsepower;
     private boolean IsThereRadio;
 
-
     public Car(int vehicleNumber, String tradeName, int numberOfWheels, int fuelTankSize, double engineVolume, String typeOfVehicle, double horsepower, boolean isThereRadio) {
         super(vehicleNumber, tradeName, numberOfWheels, fuelTankSize, engineVolume);
         this.typeOfVehicle = typeOfVehicle;
@@ -38,10 +37,10 @@ public class Car extends Vehicle{
 
     @Override
     public String toString() {
-        return "Car{" +
-                "typeOfVehicle='" + typeOfVehicle + '\'' +
-                ", horsepower=" + horsepower +
-                ", IsThereRadio=" + IsThereRadio +
+        return "---------------\n" + super.toString() + "\nCar -> {" +
+                "typeOfVehicle = " + typeOfVehicle + '\'' +
+                ", horsepower = " + horsepower +
+                ", IsThereRadio = " + IsThereRadio +
                 '}';
     }
 }

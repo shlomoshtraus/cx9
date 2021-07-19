@@ -3,8 +3,8 @@ public class Vehicle {
     private int vehicleNumber;
     private String tradeName;
     private int numberOfWheels;
-    private int fuelTankSize;
-    private double engineVolume;
+    private double fuelTankSize;
+    private double engineVolume;//מספר הרכב, שם מסחרי, מספר גלגלים, מחיר, גדול מיכל הדלק, נפח מנוע
 
     public Vehicle(int vehicleNumber, String tradeName, int numberOfWheels, int fuelTankSize, double engineVolume) {
         this.vehicleNumber = vehicleNumber;
@@ -38,7 +38,7 @@ public class Vehicle {
         this.numberOfWheels = numberOfWheels;
     }
 
-    public int getFuelTankSize() {
+    public double getFuelTankSize() {
         return fuelTankSize;
     }
 
@@ -56,12 +56,12 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle{" +
-                "vehicleNumber=" + vehicleNumber +
-                ", tradeName='" + tradeName + '\'' +
-                ", numberOfWheels=" + numberOfWheels +
-                ", fuelTankSize=" + fuelTankSize +
-                ", engineVolume=" + engineVolume +
+        return "---------------\n" +"Vehicle -> {" +
+                "vehicleNumber = " + vehicleNumber +
+                ", tradeName = " + tradeName + '\'' +
+                ", numberOfWheels = " + numberOfWheels +
+                ", fuelTankSize = " + fuelTankSize +
+                ", engineVolume = " + engineVolume +
                 '}';
     }
 }

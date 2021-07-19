@@ -27,9 +27,9 @@ public class Track extends Vehicle{
 
     @Override
     public String toString() {
-        return "Track{" +
-                "speedLimit=" + speedLimit +
-                ", MaxWeight=" + MaxWeight +
+        return "---------------\n" + super.toString() + "Track -> {" +
+                "speed Limit = " + speedLimit +
+                ", Max Weight = " + MaxWeight +
                 '}';
     }
 }
