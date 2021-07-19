@@ -57,11 +57,11 @@ public class Vehicle {
     @Override
     public String toString() {
         return "---------------\n" +"Vehicle -> {" +
-                "vehicleNumber = " + vehicleNumber +
-                ", tradeName = " + tradeName + '\'' +
-                ", numberOfWheels = " + numberOfWheels +
-                ", fuelTankSize = " + fuelTankSize +
-                ", engineVolume = " + engineVolume +
+                "\n\tvehicleNumber = " + vehicleNumber +
+                "\n\ttradeName = " + tradeName +
+                "\n\tnumberOfWheels = " + numberOfWheels +
+                "\n\tfuelTankSize = " + fuelTankSize +
+                "\n\tengineVolume = " + engineVolume +
                 '}';
     }
 }

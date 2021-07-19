@@ -3,10 +3,9 @@ import java.util.Scanner;
 public class Admin {
 
     Scanner scan = new Scanner(System.in);
-    private String adminPassword;
+    private String adminPassword = "abcd1234";
 
     public Admin() {
-
     }
 
     public void setNewAdminPassword() {

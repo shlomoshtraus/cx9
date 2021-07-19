@@ -38,9 +38,9 @@ public class Car extends Vehicle{
     @Override
     public String toString() {
         return "---------------\n" + super.toString() + "\nCar -> {" +
-                "typeOfVehicle = " + typeOfVehicle + '\'' +
-                ", horsepower = " + horsepower +
-                ", IsThereRadio = " + IsThereRadio +
+                "\n\ttype Of Vehicle = " + typeOfVehicle +
+                "\n\thorsepower = " + horsepower +
+                "\n\tIs There Radio = " + IsThereRadio +
                 '}';
     }
 }

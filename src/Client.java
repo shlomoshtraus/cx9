@@ -47,10 +47,10 @@ public class Client {
     @Override
     public String toString() {
         return "---------------\n" + "Client -> {" +
-                "ID=" + ID +
-                ", customerName = " + customerName + '\'' +
-                ", how Many Vehicles DidHe Buy = " + howManyVehiclesDidHeBuy +
-                ", how Much Money Does He Have = " + howMuchMoneyDoesHeHave +
+                "\n\tID = " + ID +
+                "\n\tcustomerName = " + customerName + '\'' +
+                "\n\thow Many Vehicles DidHe Buy = " + howManyVehiclesDidHeBuy +
+                "\n\thow Much Money Does He Have = " + howMuchMoneyDoesHeHave +
                 '}';
     }
 }
