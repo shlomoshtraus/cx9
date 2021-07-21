@@ -6,6 +6,6 @@ public class Sales {
     }
 
     void carsList(){
+        ArrayList<Vehicle> cars = new ArrayList<>();
     }
-
 }
