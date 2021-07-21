@@ -5,11 +5,9 @@ public class Client {
     private int howManyVehiclesDidHeBuy;
     private double howMuchMoneyDoesHeHave;
 
-    public Client(long ID, String customerName, int howManyVehiclesDidHeBuy, double howMuchMoneyDoesHeHave) {
+    public Client(long ID, String customerName) {
         this.ID = ID;
         this.customerName = customerName;
-        this.howManyVehiclesDidHeBuy = howManyVehiclesDidHeBuy;
-        this.howMuchMoneyDoesHeHave = howMuchMoneyDoesHeHave;
     }
 
     public long getID() {
