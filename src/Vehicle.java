@@ -1,13 +1,13 @@
 public class Vehicle {
 
-    private int vehicleNumber;
+    private String vehicleNumber;
     private String tradeName;
     private int numberOfWheels;
     private double prise ;
     private double fuelTankSize;
     private double engineVolume;//   מחיר, גדול מיכל הדלק, נפח מנוע
 
-    public Vehicle(int vehicleNumber, String tradeName, int numberOfWheels, double prise, int fuelTankSize, double engineVolume) {
+    public Vehicle(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume) {
         this.vehicleNumber = vehicleNumber;
         this.tradeName = tradeName;
         this.numberOfWheels = numberOfWheels;
@@ -16,11 +16,11 @@ public class Vehicle {
         this.engineVolume = engineVolume;
     }
 
-    public int getVehicleNumber() {
+    public String getVehicleNumber() {
         return vehicleNumber;
     }
 
-    public void setVehicleNumber(int vehicleNumber) {
+    public void setVehicleNumber(String vehicleNumber) {
         this.vehicleNumber = vehicleNumber;
     }
 
@@ -66,11 +66,11 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "---------------\n" +"Vehicle" +
-                "\n\tvehicleNumber = " + vehicleNumber +
-                "\n\ttradeName = " + tradeName +
-                "\n\tnumberOfWheels = " + numberOfWheels +
-                "\n\tfuelTankSize = " + fuelTankSize +
-                "\n\tengineVolume = " + engineVolume;
+        return
+                "\n\tvehicle Number = " + vehicleNumber +
+                "\n\ttrade Name = " + tradeName +
+                "\n\tnumber Of Wheels = " + numberOfWheels +
+                "\n\tfuel Tank Size = " + fuelTankSize +
+                "\n\tengine Volume = " + engineVolume;
     }
 }

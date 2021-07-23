@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Sales {
 
+    ArrayList<Vehicle> cars = new ArrayList<>();
+
     public Sales() {
     }
 
-    void carsList(){
-        ArrayList<Vehicle> cars = new ArrayList<>();
-    }
+  
 }
