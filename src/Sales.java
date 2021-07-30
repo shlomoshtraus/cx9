@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Sales {
 
@@ -31,7 +30,7 @@ public class Sales {
          cars.add(new Car(vehicleNumber, tradeName, numberOfWheels, prise,  fuelTankSize, engineVolume, typeOfVehicle, horsepower, isThereRadio));
     }
 
-    void addTrack(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, boolean speedLimit, double maxWeight){
+    void addTrack(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, double speedLimit, double maxWeight){
         cars.add(new Track(vehicleNumber, tradeName, numberOfWheels, prise, fuelTankSize, engineVolume, speedLimit, maxWeight));
     }
 }

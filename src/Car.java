@@ -40,7 +40,7 @@ public class Car extends Vehicle{
 
     @Override
     public String toString() {
-        return "\n---------------" + "\nCar: " + super.getTradeName() +  super.toString() +
+        return "\n---------------" + "\nCar: " +  super.toString() +
         "\n\ttype Of Vehicle = " + typeOfVehicle +
                 "\n\thorsepower = " + horsepower +
                 "\n\tIs There Radio = " + isThereRadio;

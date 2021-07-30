@@ -1,22 +1,22 @@
 public class Track extends Vehicle{
 
-    private boolean speedLimit;
+    private double speedLimit;
     private double maxWeight;
 
     public Track() {
     }
 
-    public Track(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, boolean speedLimit, double maxWeight) {
+    public Track(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, double speedLimit, double maxWeight) {
         super(vehicleNumber, tradeName, numberOfWheels, prise , fuelTankSize, engineVolume);
         this.speedLimit = speedLimit;
         this.maxWeight = maxWeight;
     }
 
-    public boolean isSpeedLimit() {
+    public double getSpeedLimit() {
         return speedLimit;
     }
 
-    public void setSpeedLimit(boolean speedLimit) {
+    public void setSpeedLimit(double speedLimit) {
         this.speedLimit = speedLimit;
     }
 
@@ -30,7 +30,7 @@ public class Track extends Vehicle{
 
     @Override
     public String toString() {
-        return "---------------\n" + super.toString() + "Track" +
+        return "\n---------------" + "\nTrack: " + super.toString() +
                 "\n\tspeed Limit = " + speedLimit +
                 "\n\tMax Weight = " + maxWeight;
     }
