@@ -7,6 +7,9 @@ public class Vehicle {
     private double fuelTankSize;
     private double engineVolume;
 
+    public Vehicle() {
+    }
+
     public Vehicle(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume) {
         this.vehicleNumber = vehicleNumber;
         this.tradeName = tradeName;

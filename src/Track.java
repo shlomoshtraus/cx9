@@ -1,12 +1,15 @@
 public class Track extends Vehicle{
 
     private boolean speedLimit;
-    private double MaxWeight;
+    private double maxWeight;
+
+    public Track() {
+    }
 
     public Track(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, boolean speedLimit, double maxWeight) {
         super(vehicleNumber, tradeName, numberOfWheels, prise , fuelTankSize, engineVolume);
         this.speedLimit = speedLimit;
-        MaxWeight = maxWeight;
+        this.maxWeight = maxWeight;
     }
 
     public boolean isSpeedLimit() {
@@ -18,17 +21,17 @@ public class Track extends Vehicle{
     }
 
     public double getMaxWeight() {
-        return MaxWeight;
+        return maxWeight;
     }
 
     public void setMaxWeight(double maxWeight) {
-        MaxWeight = maxWeight;
+        this.maxWeight = maxWeight;
     }
 
     @Override
     public String toString() {
         return "---------------\n" + super.toString() + "Track" +
                 "\n\tspeed Limit = " + speedLimit +
-                "\n\tMax Weight = " + MaxWeight;
+                "\n\tMax Weight = " + maxWeight;
     }
 }

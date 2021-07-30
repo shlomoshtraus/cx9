@@ -5,24 +5,26 @@ public class Sales {
 
     private ArrayList<Vehicle> cars = new ArrayList<>();
 
+    private String vehicleNumber;
+    private String tradeName;
+    private int numberOfWheels;
+    private double prise ;
+    private double fuelTankSize;
+    private double engineVolume;
+
+    private boolean speedLimit;
+    private double maxWeight;
+
+    private String typeOfVehicle;
+    private double horsepower;
+    private boolean isThereRadio;
+
     public Sales() {
     }
 
     public ArrayList<Vehicle> getCars() {
+        System.out.println("Enter the admin password");
         return cars;
-    }
-
-    public void setCars() {
-        System.out.println("What type of vehicle do you want to add?" +
-                "\n\t Press 1 for a Car" +
-                "\n\t Press 2 for a Track");
-
-        Scanner s = new Scanner(System.in);
-        int userSelection = s.nextInt();
-        switch (userSelection){
-            case 1:
-
-        }
     }
 
     void addCar(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, String typeOfVehicle, double horsepower, boolean isThereRadio){

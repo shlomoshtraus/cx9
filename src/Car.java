@@ -2,13 +2,16 @@ public class Car extends Vehicle{
 
     private String typeOfVehicle;
     private double horsepower;
-    private boolean IsThereRadio;
+    private boolean isThereRadio;
+
+    public Car() {
+    }
 
     public Car(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, String typeOfVehicle, double horsepower, boolean isThereRadio) {
         super(vehicleNumber, tradeName, numberOfWheels, prise, fuelTankSize, engineVolume);
         this.typeOfVehicle = typeOfVehicle;
         this.horsepower = horsepower;
-        this.IsThereRadio = isThereRadio;
+        this.isThereRadio = isThereRadio;
     }
 
     public String getTypeOfVehicle() {
@@ -28,11 +31,11 @@ public class Car extends Vehicle{
     }
 
     public boolean isThereRadio() {
-        return IsThereRadio;
+        return isThereRadio;
     }
 
     public void setThereRadio(boolean thereRadio) {
-        IsThereRadio = thereRadio;
+        isThereRadio = thereRadio;
     }
 
     @Override
@@ -40,6 +43,6 @@ public class Car extends Vehicle{
         return "\n---------------" + "\nCar: " + super.getTradeName() +  super.toString() +
         "\n\ttype Of Vehicle = " + typeOfVehicle +
                 "\n\thorsepower = " + horsepower +
-                "\n\tIs There Radio = " + IsThereRadio;
+                "\n\tIs There Radio = " + isThereRadio;
     }
 }
