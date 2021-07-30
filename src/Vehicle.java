@@ -5,7 +5,7 @@ public class Vehicle {
     private int numberOfWheels;
     private double prise ;
     private double fuelTankSize;
-    private double engineVolume;//   מחיר, גדול מיכל הדלק, נפח מנוע
+    private double engineVolume;
 
     public Vehicle(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume) {
         this.vehicleNumber = vehicleNumber;

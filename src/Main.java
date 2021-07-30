@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class Main {
 
@@ -12,7 +11,7 @@ public class Main {
         a.cars.add(new Car("M65FT8","Nissan",6,200000.0,5.5,10,"",120,true));
         a.cars.add(new Car("Y345HU","Ferrari",6,200000.0,5.5,10,"",120,true));
 
-        System.out.println(a.cars);
+
 
 
     }
