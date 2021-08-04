@@ -11,7 +11,7 @@ public class Client {
         this.howMuchMoney = howMuchMoney;
     }
 
-    public long getID() {
+    public int getID() {
         return ID;
     }
 
@@ -45,11 +45,10 @@ public class Client {
 
     @Override
     public String toString() {
-        return "---------------\n" + "Client -> {" +
-                "\n\tID = " + ID +
-                "\n\tcustomerName = " + customerName + '\'' +
-                "\n\thow Many Vehicles DidHe Buy = " + howManyVehiclesDidHeBuy +
-                "\n\thow Much Money Does He Have = " + howMuchMoney +
-                '}';
+        return "\n---------------\n" + "Client:"  +
+                "\n\tId = " + ID +
+                "\n\tCustomer name = " + customerName + '\'' +
+                "\n\tHow Many vehicles did he buy = " + howManyVehiclesDidHeBuy +
+                "\n\tHow much money does he have = " + howMuchMoney;
     }
 }
