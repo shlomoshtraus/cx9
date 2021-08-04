@@ -1,20 +1,21 @@
 public class Client {
 
-    private long ID;
+    private int ID;
     private String customerName;
     private int howManyVehiclesDidHeBuy;
-    private double howMuchMoneyDoesHeHave;
+    private double howMuchMoney;
 
-    public Client(long ID, String customerName) {
+    public Client(int ID, String customerName, double howMuchMoney) {
         this.ID = ID;
         this.customerName = customerName;
+        this.howMuchMoney = howMuchMoney;
     }
 
     public long getID() {
         return ID;
     }
 
-    public void setID(long ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -34,12 +35,12 @@ public class Client {
         this.howManyVehiclesDidHeBuy = howManyVehiclesDidHeBuy;
     }
 
-    public double getHowMuchMoneyDoesHeHave() {
-        return howMuchMoneyDoesHeHave;
+    public double getHowMuchMoney() {
+        return howMuchMoney;
     }
 
-    public void setHowMuchMoneyDoesHeHave(double howMuchMoneyDoesHeHave) {
-        this.howMuchMoneyDoesHeHave = howMuchMoneyDoesHeHave;
+    public void setHowMuchMoney(double howMuchMoney) {
+        this.howMuchMoney = howMuchMoney;
     }
 
     @Override
@@ -48,7 +49,7 @@ public class Client {
                 "\n\tID = " + ID +
                 "\n\tcustomerName = " + customerName + '\'' +
                 "\n\thow Many Vehicles DidHe Buy = " + howManyVehiclesDidHeBuy +
-                "\n\thow Much Money Does He Have = " + howMuchMoneyDoesHeHave +
+                "\n\thow Much Money Does He Have = " + howMuchMoney +
                 '}';
     }
 }

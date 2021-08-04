@@ -4,9 +4,6 @@ public class Car extends Vehicle{
     private double horsepower;
     private boolean isThereRadio;
 
-    public Car() {
-    }
-
     public Car(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, String typeOfVehicle, double horsepower, boolean isThereRadio) {
         super(vehicleNumber, tradeName, numberOfWheels, prise, fuelTankSize, engineVolume);
         this.typeOfVehicle = typeOfVehicle;

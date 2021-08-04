@@ -3,9 +3,6 @@ public class Track extends Vehicle{
     private double speedLimit;
     private double maxWeight;
 
-    public Track() {
-    }
-
     public Track(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, double speedLimit, double maxWeight) {
         super(vehicleNumber, tradeName, numberOfWheels, prise , fuelTankSize, engineVolume);
         this.speedLimit = speedLimit;

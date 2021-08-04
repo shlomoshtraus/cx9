@@ -1,36 +1,53 @@
-import java.util.ArrayList;
-
 public class Sales {
 
-    private ArrayList<Vehicle> cars = new ArrayList<>();
+    private int clientId;
+    private int saleNumber;
+    private String vehicleId;
+    private static int numberOfSales;
 
-    private String vehicleNumber;
-    private String tradeName;
-    private int numberOfWheels;
-    private double prise ;
-    private double fuelTankSize;
-    private double engineVolume;
-
-    private boolean speedLimit;
-    private double maxWeight;
-
-    private String typeOfVehicle;
-    private double horsepower;
-    private boolean isThereRadio;
-
-    public Sales() {
+    public Sales(int clientId, int saleNumber, String vehicleId) {
+        this.clientId = clientId;
+        this.saleNumber = saleNumber;
+        this.vehicleId = vehicleId;
     }
 
-    public ArrayList<Vehicle> getCars() {
-        System.out.println("Enter the admin password");
-        return cars;
+    public int getClientId() {
+        return clientId;
     }
 
-    void addCar(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, String typeOfVehicle, double horsepower, boolean isThereRadio){
-         cars.add(new Car(vehicleNumber, tradeName, numberOfWheels, prise,  fuelTankSize, engineVolume, typeOfVehicle, horsepower, isThereRadio));
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
-    void addTrack(String vehicleNumber, String tradeName, int numberOfWheels, double prise, double fuelTankSize, double engineVolume, double speedLimit, double maxWeight){
-        cars.add(new Track(vehicleNumber, tradeName, numberOfWheels, prise, fuelTankSize, engineVolume, speedLimit, maxWeight));
+    public int getSaleNumber() {
+        return saleNumber;
+    }
+
+    public void setSaleNumber(int saleNumber) {
+        this.saleNumber = saleNumber;
+    }
+
+    public String getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(String vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
+    public static int getNumberOfSales() {
+        return numberOfSales;
+    }
+
+    public static void setNumberOfSales(int numberOfSales) {
+        Sales.numberOfSales = numberOfSales;
+    }
+
+    @Override
+    public String toString() {
+        return "\n------------------" + "\nSales:" +
+                "\n\tclientId = " + clientId +
+                "\n\tsaleNumber = " + saleNumber +
+                "\n\tvehicleId= " + vehicleId ;
     }
 }
