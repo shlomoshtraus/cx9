@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        int userSelection;
         addVehicles();
         addClients();
         System.out.println("Hello\nAre you a new client? \n\t 1 for yes \n\t 2 for no");
@@ -35,15 +36,20 @@ public class Main {
                             System.out.println("\t" + (j+1) + ")\t" + "Type of vehicle: " + vehicles.get(j).getClass().getName()
                                     + "\n\t\tTrade name: " + vehicles.get(j).getTradeName());
                         }
-                        System.out.println("");
                         break;
                     }
                     else{
-                        System.out.println("There is no user with such an ID!");
-
+                        if(i == clients.size()){
+                            System.out.println("There is no user with such an ID!");
+                            System.out.println("If you want to sign up. Run the program again!");
+                            System.exit(0);
+                        }
                     }
-
                 }
+                System.out.println("What is your choice?");
+                userSelection = scan.nextInt();
+                System.out.println("You have selected vehicle #" + userSelection + ".\n" +
+                        "The vehicle details are:" + vehicles.get((userSelection-1)).toString());
         }
 
     }
