@@ -9,6 +9,7 @@ public class Sales {
         this.clientId = clientId;
         this.saleNumber = saleNumber;
         this.vehicleId = vehicleId;
+        numberOfSales++;
     }
 
     public int getClientId() {

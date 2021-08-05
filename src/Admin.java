@@ -3,21 +3,25 @@ import java.util.Scanner;
 public class Admin {
 
     Scanner scan = new Scanner(System.in);
-    private String adminPassword = "abcd1234";
+    private int adminPassword = 0123456;
 
     public Admin() {
     }
 
+    public int getAdminPassword() {
+        return adminPassword;
+    }
+
     public void setNewAdminPassword() {
-        String currentPassword;
-        String newPassword;
+        int currentPassword;
+        int newPassword;
 
         System.out.println("Enter the current password");
-        currentPassword = scan.next();
+        currentPassword = scan.nextInt();
 
-        if (currentPassword.equals(this.adminPassword)){
+        if (currentPassword == this.adminPassword){
             System.out.println("Enter a new password");
-            newPassword = scan.next();
+            newPassword = scan.nextInt();
             this.adminPassword = newPassword;
         }
 

@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         int userSelection;
+        Admin admin = new Admin();
         addVehicles();
         addClients();
         System.out.println("Hello\nAre you a new client? \n\t 1 for yes \n\t 2 for no");
@@ -29,6 +30,11 @@ public class Main {
             case 2:
                 System.out.println("Enter your id");
                 id = scan.nextInt();
+                if (id == admin.getAdminPassword()){
+                    //TODO
+            }
+            else
+            {
                 for (int i = 0; i < clients.size(); i++){
                     if(clients.get(i).getID() == id){
                         System.out.println("Select (the number) of one of the following vehicles");
@@ -50,6 +56,10 @@ public class Main {
                 userSelection = scan.nextInt();
                 System.out.println("You have selected vehicle #" + userSelection + ".\n" +
                         "The vehicle details are:" + vehicles.get((userSelection-1)).toString());
+                System.out.println("Do you want to buy it? \n\tY/N");
+            }
+
+
         }
 
     }
