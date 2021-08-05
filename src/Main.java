@@ -28,12 +28,19 @@ public class Main {
             case 2:
                 System.out.println("Enter your id");
                 id = scan.nextInt();
-                for (int i = 0; 1 < clients.size(); i++){
+                for (int i = 0; i < clients.size(); i++){
                     if(clients.get(i).getID() == id){
-                        //TODO
+                        System.out.println("Select (the number) of one of the following vehicles");
+                        for (int j = 0; j < vehicles.size(); j++) {
+                            System.out.println("\t" + (j+1) + ")\t" + "Type of vehicle: " + vehicles.get(j).getClass().getName()
+                                    + "\n\t\tTrade name: " + vehicles.get(j).getTradeName());
+                        }
+                        System.out.println("");
+                        break;
                     }
                     else{
-                       //TODO
+                        System.out.println("There is no user with such an ID!");
+
                     }
 
                 }
@@ -45,8 +52,8 @@ public class Main {
         vehicles.add(new Track("HF7299", "scaina", 8, 52, 212.002, 1800, 120, 3));
         vehicles.add(new Track("YS7637", "scaina", 8, 52, 242.002, 1800, 110, 3));
         vehicles.add(new Track("JC6838", "scaina", 8, 52, 259.002, 1800, 120, 3));
-        vehicles.add(new Track("LR6267", "moti", 8, 52, 150.002, 3200, 140, 3));
-        vehicles.add(new Track("RC2410", "moti", 8, 52, 123.002, 3200, 1009, 3));
+        vehicles.add(new Track("LR6267", "BMW", 8, 52, 150.002, 3200, 140, 3));
+        vehicles.add(new Track("RC2410", "BMW", 8, 52, 123.002, 3200, 1009, 3));
         vehicles.add(new Car("MM5049", "ford", 4, 52, 132.002, 1800, "4*4", 2, true));
         vehicles.add(new Car("IQ7238", "mazda", 4, 62, 122.002, 1200, "sadden", 2, false));
         vehicles.add(new Car("SA8565", "ford", 4, 52, 72.002, 1800, "4*4", 2, true));
