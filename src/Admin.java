@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Admin {
 
     Scanner scan = new Scanner(System.in);
-    private int adminPassword = 0123456;
+    private int adminPassword = 123456;
 
     public Admin() {
     }

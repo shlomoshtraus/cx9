@@ -71,6 +71,7 @@ public class Vehicle {
                 "\n\ttrade Name = " + tradeName +
                 "\n\tnumber Of Wheels = " + numberOfWheels +
                 "\n\tfuel Tank Size = " + fuelTankSize +
+                "\n\tprise = "  + prise +
                 "\n\tengine Volume = " + engineVolume;
     }
 }
