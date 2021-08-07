@@ -78,8 +78,8 @@ public class Main {
                     if ("Y".equals(buy)){
                         if (vehicles.get((userSelection -1)).getPrise() <= clientMoney){
                             sales.add(new Sales(id,12345,vehicles.get((userSelection -1)).getVehicleNumber()));
-                            vehicles.remove((userSelection -1));
                             clients.get(i).setHowMuchMoney(clients.get(i).getHowMuchMoney() - vehicles.get(userSelection-1).getPrise());
+                            vehicles.remove((userSelection -1));
                             System.out.println(clients.get(i).getHowMuchMoney());
                         }
                         else {
