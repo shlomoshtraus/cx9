@@ -47,8 +47,8 @@ public class Sales {
     @Override
     public String toString() {
         return "\n------------------" + "\nSales:" +
-                "\n\tclientId = " + clientId +
-                "\n\tsaleNumber = " + saleNumber +
-                "\n\tvehicleId= " + vehicleId ;
+                "\n\tClient ID = " + clientId +
+                "\n\tSale number = " + saleNumber +
+                "\n\tvehicle number= " + vehicleId ;
     }
 }

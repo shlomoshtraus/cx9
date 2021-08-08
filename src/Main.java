@@ -101,12 +101,16 @@ public class Main {
                 clientMoney = clients.get(i).getHowMuchMoney();
                 System.out.println("What is your choice?");
                 int userSelection = scan.nextInt();
+                if (userSelection < vehicles.size() || userSelection > vehicles.size()){
+                    System.out.println("there is no car with this number\t try again");
+                    clientOptions(id);
+                }
                 System.out.println("You have selected vehicle #" + userSelection + ".\n" +
                         "The vehicle details are:" + vehicles.get((userSelection -1)).toString());
                 System.out.println("Do you want to buy it?\tY/N");
                 String buy = scan.next();
 
-                if ("Y".equals(buy)){
+                if ("Y".equals(buy) || "y".equals(buy)){
                     if (vehicles.get((userSelection -1)).getPrise() <= clientMoney){
                         sales.add(new Sales(id,saleNumber,vehicles.get((userSelection -1)).getVehicleNumber()));
 
@@ -114,7 +118,8 @@ public class Main {
                         clients.get(i).setHowMuchMoney(clients.get(i).getHowMuchMoney() - vehicles.get(userSelection-1).getPrise());
                         clients.get(i).setHowManyVehiclesDidHeBuy(clients.get(i).getHowManyVehiclesDidHeBuy()+1);
                         vehicles.remove((userSelection -1));
-                        System.out.println(clients.get(i).getHowMuchMoney());
+                        System.out.println("the sale has been done!");
+                        System.out.println("pleasure to do business with you!");
                     }
                     else {
                         System.out.println("Oh no. Looks like you do not have enough money to buy this car!\nChoose another:\n");
@@ -125,8 +130,7 @@ public class Main {
                     System.out.println("Ok. Returns you to the list of vehicles.");
                     clientOptions(id);
                 }
-            }
-            else{
+            } else{
                 if (i == clients.size()-1){
                     System.out.println("There is no user with such an ID!");
                     System.out.println("Choose one of the options:" +
@@ -151,7 +155,6 @@ public class Main {
                 }
             }
         }
-
     }
 
     // The method for displaying the management options in case the user manages.
@@ -171,7 +174,7 @@ public class Main {
             case 3:
                 System.out.println(sales);break;
             case 4:
-                System.out.println(Sales.getNumberOfSales());
+                System.out.println(Sales.getNumberOfSales());break;
             case 5:
                 admin.setNewAdminPassword();break;
             case 6:
@@ -198,11 +201,11 @@ public class Main {
 
      // The method automatically adds vehicles to the Clients arrayList.
     private static void addClients(){
-        clients.add(new Client(45738526, "Avi", 1850543));
-        clients.add(new Client(69125674, "Shlomo", 1990000));
-        clients.add(new Client(21925183, "ana", 3562010));
-        clients.add(new Client(92546535, "Moshe", 2120000));
-        clients.add(new Client(32158796, "David", 3000000));
+        clients.add(new Client(4573856, "Avi", 1850543));
+        clients.add(new Client(6912574, "Shlomo", 1990000));
+        clients.add(new Client(2192583, "ana", 3562010));
+        clients.add(new Client(9254635, "Moshe", 2120000));
+        clients.add(new Client(3215796, "David", 3000000));
     }
 
 
