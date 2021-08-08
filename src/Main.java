@@ -51,7 +51,6 @@ public class Main {
                         }
                     }
                 default:
-                    break;
             }
         }while (true); // The loop ran until the user pressed 0.
     }
@@ -101,10 +100,14 @@ public class Main {
                 clientMoney = clients.get(i).getHowMuchMoney();
                 System.out.println("What is your choice?");
                 int userSelection = scan.nextInt();
-                if (userSelection < vehicles.size() || userSelection > vehicles.size()){
-                    System.out.println("there is no car with this number\t try again");
+
+                // Checks that the selection is valid.
+                if (userSelection < 1 || userSelection > vehicles.size()){
+                    System.out.println("there is no car with this number!  try again.");
                     clientOptions(id);
                 }
+
+
                 System.out.println("You have selected vehicle #" + userSelection + ".\n" +
                         "The vehicle details are:" + vehicles.get((userSelection -1)).toString());
                 System.out.println("Do you want to buy it?\tY/N");
@@ -131,7 +134,7 @@ public class Main {
                     clientOptions(id);
                 }
             } else{
-                if (i == clients.size()-1){
+                if (i == clients.size()){
                     System.out.println("There is no user with such an ID!");
                     System.out.println("Choose one of the options:" +
                             "\n\t1) Try again." +"\n\t2) Sign up.");
@@ -165,6 +168,12 @@ public class Main {
                 "\n\t3) View sales list" + "\n\t4) View how many sales there were" +
                 "\n\t5) Change admin password" + "\n\t6) Return to the main menu");
         int managerChoice = scan.nextInt();
+
+        // Checks that the selection is valid.
+        if (managerChoice < 1 || managerChoice> 6){
+            System.out.println("Invalid selection! try again");
+            managerOptions();
+        }
 
         switch (managerChoice){
             case 1:
