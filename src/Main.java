@@ -8,9 +8,9 @@ import java.util.Scanner;
  */
 public class Main {
 
-    private static final ArrayList<Vehicle> vehicles = new ArrayList<>(); // Saves the list of vehicles
-    private static final ArrayList<Sales> sales = new ArrayList<>(); // Saves the list of sales
-    private static final ArrayList<Client> clients = new ArrayList<>(); // Saves the list of clients
+    private static final ArrayList<Vehicle> vehicles = new ArrayList<>();
+    private static final ArrayList<Sales> sales = new ArrayList<>();
+    private static final ArrayList<Client> clients = new ArrayList<>();
     private static final Admin admin = new Admin();
     private static final Scanner scan = new Scanner(System.in);
     private static boolean stopRunning = true;
@@ -41,7 +41,8 @@ public class Main {
                             stopRunning = true;
                             managerOptions();
                         }while (stopRunning); // Displays the management options until the manager presses 5.
-                    } else {
+                    } else
+                    {
                         if (vehicles.isEmpty()) { // Checks that there are vehicles for sale.
                             System.out.println("We're so sorry but there are currently no vehicles for sale.\n" +
                                     "We would love to see you on another occasion.");
@@ -90,7 +91,9 @@ public class Main {
         for (int i = 0; i < clients.size(); i++){ // Checks that the customer does exist.
             if(clients.get(i).getID() == id){
                 System.out.println("Select (the number) of one of the following vehicles");
-                for (int j = 0; j < vehicles.size(); j++) { // Prints the list of vehicles.
+
+                // Prints the list of vehicles.
+                for (int j = 0; j < vehicles.size(); j++) {
                     System.out.println("\t" + (j+1) + ")\t" + "Type of vehicle: " + vehicles.get(j).getClass().getName()
                             + "\n\t\tTrade name: " + vehicles.get(j).getTradeName());
                 }
@@ -106,7 +109,10 @@ public class Main {
                 if ("Y".equals(buy)){
                     if (vehicles.get((userSelection -1)).getPrise() <= clientMoney){
                         sales.add(new Sales(id,saleNumber,vehicles.get((userSelection -1)).getVehicleNumber()));
+
+                        //Updates the balance of money left to the customer
                         clients.get(i).setHowMuchMoney(clients.get(i).getHowMuchMoney() - vehicles.get(userSelection-1).getPrise());
+                        clients.get(i).setHowManyVehiclesDidHeBuy(clients.get(i).getHowManyVehiclesDidHeBuy()+1);
                         vehicles.remove((userSelection -1));
                         System.out.println(clients.get(i).getHowMuchMoney());
                     }
@@ -153,7 +159,8 @@ public class Main {
     private static void managerOptions(){
         System.out.println("\n************************\n" + "Hello manager\nWhat do you want to do?" +
                 "\n\t1) View client list" + "\n\t2) View vehicle list" +
-                "\n\t3) View sales list" + "\n\t4) Change admin password" + "\n\t5) Return to the main menu");
+                "\n\t3) View sales list" + "\n\t4) View how many sales there were" +
+                "\n\t5) Change admin password" + "\n\t6) Return to the main menu");
         int managerChoice = scan.nextInt();
 
         switch (managerChoice){
@@ -164,8 +171,10 @@ public class Main {
             case 3:
                 System.out.println(sales);break;
             case 4:
-                admin.setNewAdminPassword();break;
+                System.out.println(Sales.getNumberOfSales());
             case 5:
+                admin.setNewAdminPassword();break;
+            case 6:
                 stopRunning = false;break;
             default:
                 break;
@@ -175,25 +184,25 @@ public class Main {
 
     // The method automatically adds vehicles to the vehicles arrayList.
     private static void addVehicles() {
-        vehicles.add(new Track("HF7299", "scaina", 8, 52, 212.002, 1800, 120, 3));
-        vehicles.add(new Track("YS7637", "scaina", 8, 52, 242.002, 1800, 110, 3));
-        vehicles.add(new Track("JC6838", "scaina", 8, 52, 259.002, 1800, 120, 3));
-        vehicles.add(new Track("LR6267", "BMW", 8, 52, 150.002, 3200, 140, 3));
-        vehicles.add(new Track("RC2410", "BMW", 8, 52, 123.002, 3200, 1009, 3));
-        vehicles.add(new Car("MM5049", "ford", 4, 52, 132.002, 1800, "4*4", 2, true));
-        vehicles.add(new Car("IQ7238", "mazda", 4, 62, 122.002, 1200, "sadden", 2, false));
-        vehicles.add(new Car("SA8565", "ford", 4, 52, 72.002, 1800, "4*4", 2, true));
-        vehicles.add(new Car("PE1820", "mazda", 4, 62, 92.002, 1200, "sadden", 2, false));
-        vehicles.add(new Car("WM1360", "Volvo", 4, 40, 82.002, 2200, "mini", 20, true));
+        vehicles.add(new Track("HF28H9", "Volvo", 8, 82000, 325.0, 1500, 120, 32000));
+        vehicles.add(new Track("Y3T54B", "Ford", 8, 110000, 340.5, 1800, 110, 40000));
+        vehicles.add(new Track("J9UY38", "Toyota", 8, 70000, 300.0, 1450, 120, 35000));
+        vehicles.add(new Track("L7U567", "Toyota", 8, 115000, 340.02, 1850, 140, 45000));
+        vehicles.add(new Track("RJ8410", "Ford", 8, 90000, 280.0, 1900, 110, 34000));
+        vehicles.add(new Car("MM5049", "Ferrari", 4, 150000, 72.8, 1600, "4*4",93, true));
+        vehicles.add(new Car("IQ7238", "Mazda", 4, 80000, 62.5, 1300, "commercial vehicle",95, false));
+        vehicles.add(new Car("SA8565", "BMW", 4, 120000, 70.0, 1800, "4*4",89, true));
+        vehicles.add(new Car("PE1820", "Ford", 4, 97000, 65.3, 1500, "family car", 90, false));
+        vehicles.add(new Car("WM1360", "Volvo", 4, 70000, 61.9, 1750, "mini", 87, true));
     }
 
      // The method automatically adds vehicles to the Clients arrayList.
     private static void addClients(){
-        clients.add(new Client(31552568, "Gorge", 300));
-        clients.add(new Client(21231355, "Jhon", 260));
-        clients.add(new Client(31155353, "Olaf", 400));
-        clients.add(new Client(13153135, "elza", 400));
-        clients.add(new Client(12345678, "ana", 400));
+        clients.add(new Client(45738526, "Avi", 1850543));
+        clients.add(new Client(69125674, "Shlomo", 1990000));
+        clients.add(new Client(21925183, "ana", 3562010));
+        clients.add(new Client(92546535, "Moshe", 2120000));
+        clients.add(new Client(32158796, "David", 3000000));
     }
 
 
