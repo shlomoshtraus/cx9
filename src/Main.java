@@ -57,6 +57,13 @@ public class Main {
         System.out.println("Hello\nYou will immediately join the customer list.");
         System.out.println("Enter your id?");
         int id = scan.nextInt();
+        for (int i = 0; i < clients.size(); i++) {
+            if (id == clients.get(i).getID()){
+                System.out.println("There is a user with such an ID re-insert");
+                id = scan.nextInt();
+                i = 0;
+            }
+        }
         System.out.println("What is your name?");
         String customerName = scan.next();
         System.out.println("How much money do you have?");
@@ -129,8 +136,8 @@ public class Main {
     }
 
     private static void managerOptions(){
-        System.out.println("\n*******************\n" + "Hello manager\nWhat do you want to do?");
-        System.out.println("\n\t1) View client list" + "\n\t2) View vehicle list" +
+        System.out.println("\n************************\n" + "Hello manager\nWhat do you want to do?" +
+                "\n\t1) View client list" + "\n\t2) View vehicle list" +
                 "\n\t3) View sales list" + "\n\t4) Change admin password" + "\n\t5) Return to the main menu");
         int managerChoice = scan.nextInt();
 
