@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -8,7 +9,7 @@ public class Main {
     private static final ArrayList<Client> clients = new ArrayList<>();
     private static final Admin admin = new Admin();
     private static final Scanner scan = new Scanner(System.in);
-
+    private static boolean stopRunning = true;
 
     public static void main(String[] args) {
 
@@ -18,7 +19,7 @@ public class Main {
         addClients();
 
         do {
-            System.out.println("\n Press 0 to exit the program:\nHello\nAre you a new client? \n\t 1 for yes. \n\t 2 for no.");
+            System.out.println("\nPress 0 to exit the program:\nHello\n Are you a new client? \n\t 1 for yes. \n\t 2 for no.");
             int userChoice = scan.nextInt();
 
             switch (userChoice) {
@@ -32,7 +33,10 @@ public class Main {
                     System.out.println("Enter your id");
                     id = scan.nextInt();
                     if (id == admin.getAdminPassword()) {
-                        managerOptions();
+                        do{
+                            stopRunning = true;
+                            managerOptions();
+                        }while (stopRunning);
                     } else {
                         if (vehicles.isEmpty()) {
                             System.out.println("We're so sorry but there are currently no vehicles for sale.\n" +
@@ -50,18 +54,24 @@ public class Main {
 
 
     private static void addNewClient(){
-        System.out.println("Enter your id");
+        System.out.println("Hello\nYou will immediately join the customer list.");
+        System.out.println("Enter your id?");
         int id = scan.nextInt();
-        System.out.println("What is your name");
+        System.out.println("What is your name?");
         String customerName = scan.next();
         System.out.println("How much money do you have?");
         double howMuchMoney = scan.nextDouble();
         clients.add(new Client(id,customerName,howMuchMoney));
+        System.out.println("You have successfully joined the customer list.");
         clientOptions(id);
     }
 
     private static void clientOptions(int id){
         double clientMoney;
+
+        Random rand = new Random();
+        int saleNumber = rand.nextInt(36143)+5338235;
+
         for (int i = 0; i < clients.size(); i++){
             if(clients.get(i).getID() == id){
                 System.out.println("Select (the number) of one of the following vehicles");
@@ -79,7 +89,7 @@ public class Main {
                 String buy = scan.next();
                 if ("Y".equals(buy)){
                     if (vehicles.get((userSelection -1)).getPrise() <= clientMoney){
-                        sales.add(new Sales(id,12345,vehicles.get((userSelection -1)).getVehicleNumber()));
+                        sales.add(new Sales(id,saleNumber,vehicles.get((userSelection -1)).getVehicleNumber()));
                         clients.get(i).setHowMuchMoney(clients.get(i).getHowMuchMoney() - vehicles.get(userSelection-1).getPrise());
                         vehicles.remove((userSelection -1));
                         System.out.println(clients.get(i).getHowMuchMoney());
@@ -119,9 +129,9 @@ public class Main {
     }
 
     private static void managerOptions(){
-        System.out.println("Hello manager\nWhat do you want to do?");
+        System.out.println("\n*******************\n" + "Hello manager\nWhat do you want to do?");
         System.out.println("\n\t1) View client list" + "\n\t2) View vehicle list" +
-                "\n\t3) View sales list" + "\n\t4) Change admin password");
+                "\n\t3) View sales list" + "\n\t4) Change admin password" + "\n\t5) Return to the main menu");
         int managerChoice = scan.nextInt();
 
         switch (managerChoice){
@@ -133,6 +143,10 @@ public class Main {
                 System.out.println(sales);break;
             case 4:
                 admin.setNewAdminPassword();break;
+            case 5:
+                stopRunning = false;break;
+            default:
+                break;
         }
 
     }
