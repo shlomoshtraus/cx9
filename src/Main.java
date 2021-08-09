@@ -2,10 +2,11 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
- /*
- / The program is designed for the management and sale of vehicles.
- / Written by Sloimy shtraus.
- */
+/*
+/ The program is designed for the management and sale of vehicles.
+/ Written by Sloimy shtraus.
+/ If you want to add vehicles use the function vehicles.add().
+*/
 public class Main {
 
     private static final ArrayList<Vehicle> vehicles = new ArrayList<>();
@@ -13,20 +14,22 @@ public class Main {
     private static final ArrayList<Client> clients = new ArrayList<>();
     private static final Admin admin = new Admin();
     private static final Scanner scan = new Scanner(System.in);
-    private static boolean stopRunning = true;
+    private static boolean stopRunning = false;
+
 
     public static void main(String[] args) {
 
-        int id;
+        int id, userChoice;
 
-        addVehicles(); // Adds the Vehicles list
-        addClients(); // Adds the Clients list
+        addVehicles(); // Adds the Vehicles list.
+        addClients(); // Adds the Clients list.
 
-        do {
-            System.out.println("\nPress 0 to exit the program:\nHello\n Are you a new client? \n\t 1 for yes. \n\t 2 for no.");
-            int userChoice = scan.nextInt();
+        while (true){
+            System.out.println("\nHello\nPress 0 to exit the program:\nAre you a new client? \n\t 1 for yes and sign up. \n\t 2 for no and continue shopping.");
+            userChoice = scan.nextInt();
 
             switch (userChoice) {
+
                 case 0:
                     System.out.println("We would love to see you again");
                     System.exit(0);
@@ -36,114 +39,121 @@ public class Main {
                 case 2:
                     System.out.println("Enter your id");
                     id = scan.nextInt();
-                    if (id == admin.getAdminPassword()) { //Checks if it's the manager.
-                        do{
-                            stopRunning = true;
+
+                    if (checksManager(id)){
+                        while (!stopRunning){
                             managerOptions();
-                        }while (stopRunning); // Displays the management options until the manager presses 5.
-                    } else
-                    {
-                        if (vehicles.isEmpty()) { // Checks that there are vehicles for sale.
-                            System.out.println("We're so sorry but there are currently no vehicles for sale.\n" +
-                                    "We would love to see you on another occasion.");
-                        } else {
-                            clientOptions(id);
                         }
+                        stopRunning = false;
+                        break;
                     }
+                    else {
+                        clientOptions(id);
+                    }
+
+                    break;
                 default:
-            }
-        }while (true); // The loop ran until the user pressed 0.
-    }
+                    break;
 
-
-
-    private static void addNewClient(){
-        System.out.println("Hello\nYou will immediately join the customer list.");
-        System.out.println("Enter your id?");
-        int id = scan.nextInt();
-
-        // Checks if there is already a client with such an ID.
-        for (int i = 0; i < clients.size(); i++) {
-            if (id == clients.get(i).getID()){
-                System.out.println("There is a user with such an ID re-insert");
-                id = scan.nextInt();
-                i = 0;
             }
         }
 
-        System.out.println("What is your name?");
-        String customerName = scan.next();
-        System.out.println("How much money do you have?");
-        double howMuchMoney = scan.nextDouble();
-        clients.add(new Client(id,customerName,howMuchMoney));
-        System.out.println("You have successfully joined the customer list.");
-        clientOptions(id); // Shows the purchase options to the new client.
     }
 
+
     // The method shows the options to the client.
-    private static void clientOptions(int id){
+    private static void clientOptions(int id) {
+
+        if (vehicles.isEmpty()){// Checks that there are vehicles for sale.
+            System.out.println("We're so sorry but there are currently no vehicles for sale.\n" +
+                    "We would love to see you on another occasion.");
+            System.exit(0);
+        }
+
+        int userSelection, choice;
         double clientMoney;
+        String buy;
 
         Random rand = new Random(); // Used to create a different sale number for each sale.
-        int saleNumber = rand.nextInt(36143)+5338235;
+        int saleNumber = rand.nextInt(36143) + 5338235;
 
-        for (int i = 0; i < clients.size(); i++){ // Checks that the customer does exist.
-            if(clients.get(i).getID() == id){
+        for (int i = 0; i < clients.size(); i++) {
+
+            // Checks that the client does exist.
+            if (clients.get(i).getID() == id) {
+
+                clientMoney = clients.get(i).getHowMuchMoney();
+
                 System.out.println("Select (the number) of one of the following vehicles");
 
                 // Prints the list of vehicles.
                 for (int j = 0; j < vehicles.size(); j++) {
-                    System.out.println("\t" + (j+1) + ")\t" + "Type of vehicle: " + vehicles.get(j).getClass().getName()
-                            + "\n\t\tTrade name: " + vehicles.get(j).getTradeName());
+                    System.out.println((j + 1) + ")\t " + vehicles.get(i).getClass().getName() + ": " +
+                            "\n\t\tTrade name: " + vehicles.get(j).getTradeName());
                 }
 
-                clientMoney = clients.get(i).getHowMuchMoney();
                 System.out.println("What is your choice?");
-                int userSelection = scan.nextInt();
+                userSelection = scan.nextInt() - 1;
 
                 // Checks that the selection is valid.
-                if (userSelection < 1 || userSelection > vehicles.size()){
+                if (userSelection < 0 || userSelection > vehicles.size() - 1) {
                     System.out.println("there is no car with this number!  try again.");
                     clientOptions(id);
                 }
 
+                System.out.println("You have selected vehicle #" + (userSelection + 1) + ".\n" +
+                        "The vehicle details are:" + vehicles.get(userSelection).toString());
 
-                System.out.println("You have selected vehicle #" + userSelection + ".\n" +
-                        "The vehicle details are:" + vehicles.get((userSelection -1)).toString());
-                System.out.println("Do you want to buy it?\tY/N");
-                String buy = scan.next();
-
-                if ("Y".equals(buy) || "y".equals(buy)){
-                    if (vehicles.get((userSelection -1)).getPrise() <= clientMoney){
-                        sales.add(new Sales(id,saleNumber,vehicles.get((userSelection -1)).getVehicleNumber()));
-
-                        //Updates the balance of money left to the customer
-                        clients.get(i).setHowMuchMoney(clients.get(i).getHowMuchMoney() - vehicles.get(userSelection-1).getPrise());
-                        clients.get(i).setHowManyVehiclesDidHeBuy(clients.get(i).getHowManyVehiclesDidHeBuy()+1);
-                        vehicles.remove((userSelection -1));
-                        System.out.println("the sale has been done!");
-                        System.out.println("pleasure to do business with you!");
-                    }
-                    else {
-                        System.out.println("Oh no. Looks like you do not have enough money to buy this car!\nChoose another:\n");
-                        clientOptions(id);
-                    }
-                }
-                else{
-                    System.out.println("Ok. Returns you to the list of vehicles.");
+                // Checks that the buyer has enough money.
+                if (clientMoney < vehicles.get(userSelection).getPrise()) {
+                    System.out.println("Oh no. Looks like you do not have enough money to buy this car!\nChoose another:\n");
                     clientOptions(id);
                 }
-            } else{
-                if (i == clients.size()){
+
+                System.out.println("Do you want to buy it?\n\tY/N");
+                System.out.println(i+"  " + clients.size());
+                buy = scan.next();
+
+                // The buyer is interested in buying.
+                if (buy.equals("Y") || buy.equals("y")) {
+
+                    // Adds the sale to the sales list.
+                    sales.add(new Sales(id, saleNumber, vehicles.get(userSelection).getVehicleNumber()));
+
+                    //Updates the balance of money left to the customer
+                    clients.get(i).setHowMuchMoney((clients.get(i).getHowMuchMoney()) - (vehicles.get(userSelection).getPrise()));
+
+                    //Updates How Many Vehicles Did He Buy.
+                    clients.get(i).setHowManyVehiclesDidHeBuy(clients.get(i).getHowManyVehiclesDidHeBuy() + 1);
+
+                    // Removes the vehicle purchased from the vehicle list.
+                    vehicles.remove(userSelection);
+
+                    System.out.println("the sale has been done!");
+                    System.out.println("pleasure to do business with you!");
+
+                    return; // Intended for getting out of the loop
+                } else { // The buyer is not interested in buying.
+                    System.out.println("OK. It's your loss!");
+                }
+
+            }
+            else { // There is no client with such an ID.
+
+                if (i == (clients.size() - 1)) { // Checking that indeed the end of the list.
+
                     System.out.println("There is no user with such an ID!");
                     System.out.println("Choose one of the options:" +
-                            "\n\t1) Try again." +"\n\t2) Sign up.");
-                    int choice = scan.nextInt();
-                    switch (choice){
+                            "\n\t1) Try again." + "\n\t2) Sign up.");
+
+                    choice = scan.nextInt();
+
+                    switch (choice) {
                         case 1:
                             System.out.println("Enter your id");
                             id = scan.nextInt();
-                            if (id == admin.getAdminPassword()){
+
+                            if (checksManager(id)){
                                 managerOptions();
                             }
                             else {
@@ -152,12 +162,58 @@ public class Main {
                             break;
                         case 2:
                             addNewClient();
+                            break;
                         default:
                             break;
                     }
+
+
                 }
+
+
+            }
+
+
+        }
+
+
+    }
+
+    // This method returns whether this user is an administrator.
+    private static boolean checksManager(int id){
+        boolean isAdmin;
+
+        isAdmin = id == admin.getAdminPassword();
+
+        return isAdmin;
+    }
+
+    // This method adds a new client to the client list
+    private static void addNewClient() {
+        int id;
+        String clientName;
+        double howMuchMoney;
+
+        System.out.println("Hello\nYou will immediately join the customer list.");
+        System.out.println("Enter your id?");
+        id = scan.nextInt();
+
+        // Checks if there is already a client with such an ID.
+        for (int i = 0; i < clients.size(); i++) {
+            if (clients.get(i).getID() == id) {
+                System.out.println("There is a user with such an ID re-insert");
+                id = scan.nextInt();
+                i = 0;
             }
         }
+
+        System.out.println("What is your name?");
+        clientName = scan.next();
+        System.out.println("How much money do you have?");
+        howMuchMoney = scan.nextDouble();
+        clients.add(new Client(id, clientName, howMuchMoney));
+        System.out.println("You have successfully joined the clients list.");
+
     }
 
     // The method for displaying the management options in case the user manages.
@@ -187,7 +243,7 @@ public class Main {
             case 5:
                 admin.setNewAdminPassword();break;
             case 6:
-                stopRunning = false;break;
+                stopRunning = true;
             default:
                 break;
         }
@@ -208,7 +264,7 @@ public class Main {
         vehicles.add(new Car("WM1360", "Volvo", 4, 70000, 61.9, 1750, "mini", 87, true));
     }
 
-     // The method automatically adds vehicles to the Clients arrayList.
+    // The method automatically adds vehicles to the Clients arrayList.
     private static void addClients(){
         clients.add(new Client(4573856, "Avi", 1850543));
         clients.add(new Client(6912574, "Shlomo", 1990000));
@@ -216,6 +272,5 @@ public class Main {
         clients.add(new Client(9254635, "Moshe", 2120000));
         clients.add(new Client(3215796, "David", 3000000));
     }
-
 
 }
