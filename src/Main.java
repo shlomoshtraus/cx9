@@ -88,7 +88,7 @@ public class Main {
 
                 // Prints the list of vehicles.
                 for (int j = 0; j < vehicles.size(); j++) {
-                    System.out.println((j + 1) + ")\t " + vehicles.get(i).getClass().getName() + ": " +
+                    System.out.println((j + 1) + ")\t " + vehicles.get(j).getClass().getName() + ": " +
                             "\n\t\tTrade name: " + vehicles.get(j).getTradeName());
                 }
 
@@ -96,9 +96,10 @@ public class Main {
                 userSelection = scan.nextInt() - 1;
 
                 // Checks that the selection is valid.
-                if (userSelection < 0 || userSelection > vehicles.size() - 1) {
-                    System.out.println("there is no car with this number!  try again.");
+                if (userSelection < 0 || userSelection > vehicles.size()-1) {
+                    System.out.println("Invalid selection! try again.");
                     clientOptions(id);
+                    return;
                 }
 
                 System.out.println("You have selected vehicle #" + (userSelection + 1) + ".\n" +
@@ -108,13 +109,14 @@ public class Main {
                 if (clientMoney < vehicles.get(userSelection).getPrise()) {
                     System.out.println("Oh no. Looks like you do not have enough money to buy this car!\nChoose another:\n");
                     clientOptions(id);
+                    return;
                 }
 
                 System.out.println("Do you want to buy it?\n\tY/N");
-                System.out.println(i+"  " + clients.size());
                 buy = scan.next();
 
                 // The buyer is interested in buying.
+                // Intended for getting out of the loop
                 if (buy.equals("Y") || buy.equals("y")) {
 
                     // Adds the sale to the sales list.
@@ -132,10 +134,11 @@ public class Main {
                     System.out.println("the sale has been done!");
                     System.out.println("pleasure to do business with you!");
 
-                    return; // Intended for getting out of the loop
-                } else { // The buyer is not interested in buying.
+                }
+                else { // The buyer is not interested in buying.
                     System.out.println("OK. It's your loss!");
                 }
+                return; // Intended for getting out of the loop
 
             }
             else { // There is no client with such an ID.
